@@ -1,33 +1,36 @@
-document.getElementById("generateBtn").addEventListener("click", async () => {
-    const url = document.getElementById("urlInput").value.trim();
-    const status = document.getElementById("status");
-    const downloadLink = document.getElementById("downloadLink");
+document.getElementById("seoForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const url = document.getElementById("websiteUrl").value;
+  const resultsDiv = document.getElementById("results");
+  resultsDiv.innerHTML = "Generating report...";
 
-    if (!url.startsWith("https://")) {
-        status.textContent = "Please enter a full URL starting with https://";
-        return;
+  try {
+    // Call your Vercel serverless function
+    const response = await fetch(`/api/pagespeed?url=${encodeURIComponent(url)}`);
+    const data = await response.json();
+
+    if (data.error) {
+      resultsDiv.innerHTML = "Error: " + data.error;
+      return;
     }
 
-    status.textContent = "Generating report...";
-    downloadLink.style.display = "none";
+    const perfScore = data.lighthouseResult.categories.performance.score * 100;
+    const seoScore = data.lighthouseResult.categories.seo.score * 100;
+    const accessibility = data.lighthouseResult.categories.accessibility.score * 100;
 
-    try {
-        const apiKey = "YOUR_API_KEY_HERE"; // Replace later
+    resultsDiv.innerHTML = `
+      <p><strong>Performance Score:</strong> ${perfScore}</p>
+      <p><strong>SEO Score:</strong> ${seoScore}</p>
+      <p><strong>Accessibility Score:</strong> ${accessibility}</p>
+    `;
 
-        const response = await fetch(
-            `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&key=${apiKey}`
-        );
+    document.getElementById("downloadPdf").style.display = "block";
 
-        if (!response.ok) throw new Error("API request failed.");
+    // Save last data for PDF
+    window.lastData = data;
 
-        const data = await response.json();
-
-        // TEMP: show something works
-        status.textContent = "Success! API returned data.";
-
-        // We’ll add jsPDF here later
-    } catch (err) {
-        status.textContent = "Error: Could not generate report.";
-        console.error(err);
-    }
+  } catch (err) {
+    resultsDiv.innerHTML = "Error generating report. Please try again.";
+    console.error(err);
+  }
 });

@@ -32,22 +32,19 @@ document.getElementById("seoForm").addEventListener("submit", async e => {
   }
 });
 
+// jsPDF download
 document.getElementById("downloadPdf").onclick = () => {
   if (!window.lastData) return;
-
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
-  const url = document.getElementById("websiteUrl").value;
 
+  const url = document.getElementById("websiteUrl").value;
   const perfScore = window.lastData.lighthouseResult.categories.performance.score * 100;
   const seoScore = window.lastData.lighthouseResult.categories.seo.score * 100;
   const accessibility = window.lastData.lighthouseResult.categories.accessibility.score * 100;
 
-  doc.setFont("Oswald");
-  doc.setFontSize(24);
+  doc.setFontSize(20);
   doc.text(`SEO Report for ${url}`, 10, 20);
-
-  doc.setFont("Montserrat");
   doc.setFontSize(12);
   doc.text(`Performance Score: ${perfScore}`, 10, 40);
   doc.text(`SEO Score: ${seoScore}`, 10, 50);

@@ -1,26 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SEO Report Tool</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Free SEO Report Tool</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Oswald&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+<body style="background-color: #0c0055; color: white; font-family: 'Montserrat', sans-serif;">
 
-<body>
-    <h1>Enso Advisory Group – SEO Report Tool</h1>
+  <div style="max-width: 700px; margin: auto; padding: 20px;">
+    <h1 style="font-family: 'Oswald', sans-serif; font-size: 24px; margin-bottom: 10px;">
+      Enso Advisory Group – Free Website Health & SEO Report
+    </h1>
+    <p>Enter your website URL below to see your basic SEO, speed, and accessibility scores. For a full SEO audit, book our comprehensive service.</p>
 
-    <div class="container">
-        <label for="urlInput">Enter Website URL:</label>
-        <input type="text" id="urlInput" placeholder="https://example.com" />
+    <form id="seoForm" style="margin-top: 15px;">
+      <input type="text" id="websiteUrl" placeholder="Enter your website URL" required
+             style="padding: 8px; width: 70%; border: 1px solid #ccc; border-radius: 4px;">
+      <button type="submit" 
+              style="background-color: #e0de12; color: #000; border: none; padding: 8px 15px; margin-left: 5px; cursor: pointer; border-radius: 4px;">
+        Generate My Free Report
+      </button>
+    </form>
 
-        <button id="generateBtn">Generate SEO Report</button>
+    <div id="results" style="margin-top: 20px;"></div>
 
-        <p id="status"></p>
+    <button id="downloadPdf" style="display:none; background-color: #e0de12; color: #000; border: none; padding: 8px 15px; margin-top: 10px; cursor: pointer; border-radius: 4px;">
+      Download PDF
+    </button>
 
-        <a id="downloadLink" href="#" style="display:none;">Download PDF</a>
+    <div style="margin-top: 20px;">
+      <a href="https://www.ensoadvisorygroup.com/contact" 
+         style="display:inline-block; background-color: #e0de12; color:#000; text-decoration:none; padding:10px 15px; border-radius:4px; font-weight:bold;">
+        Book Our Full SEO Service
+      </a>
     </div>
+  </div>
 
-    <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

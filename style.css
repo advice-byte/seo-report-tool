@@ -1,33 +1,85 @@
+/* GENERAL STYLES */
 body {
-    font-family: Arial, sans-serif;
-    background: #0c0055;
-    color: white;
-    text-align: center;
-    padding: 40px;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #0c0055;
+  color: white;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
 }
 
 h1 {
-    color: #e0de12;
-    font-size: 32px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 24px;
+  margin-bottom: 5px;
 }
 
-.container {
-    margin-top: 20px;
+header {
+  text-align: center;
+  padding: 20px;
 }
 
-input {
-    padding: 10px;
-    width: 300px;
-    border-radius: 6px;
-    border: none;
+.seo-tool-container {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #1a0a66;
+  border-radius: 8px;
+}
+
+.seo-tool-container p {
+  font-size: 14px;
+}
+
+form {
+  margin-top: 15px;
+}
+
+input[type="text"] {
+  padding: 8px;
+  width: 70%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 button {
-    padding: 12px 20px;
-    margin-left: 10px;
-    background: #e0de12;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
+  background-color: #e0de12;
+  color: #000;
+  border: none;
+  padding: 8px 15px;
+  margin-left: 5px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+#results {
+  margin-top: 20px;
+}
+
+.full-service a {
+  display: inline-block;
+  background-color: #e0de12;
+  color: #000;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* FOOTER */
+footer {
+  background-color: #000033;
+  color: #e0de12;
+  text-align: center;
+  padding: 15px 10px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  font-size: 14px;
+}
+
+footer p {
+  margin: 0;
 }
